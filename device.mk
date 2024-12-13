@@ -206,6 +206,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml\
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.biometrics.face.xml\
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.assist.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.assist.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.compass.xml \
@@ -320,6 +321,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # camera google face detection
 PRODUCT_PROPERTY_OVERRIDES += \
+	ro.faceunlock.supported=true \
     persist.camera.googfd.enable=1
 
 # camera hal buffer management
@@ -397,6 +399,12 @@ PRODUCT_PACKAGES += \
 #Bluetooth SAR HAL
 PRODUCT_PACKAGES_DEBUG += \
     bluetooth_sar_test
+
+# Face unlock
+PRODUCT_PACKAGES += \
+    libfacelock \
+    face_unlock_hal \
+    face_biometrics_hidl
 
 # Bluetooth SoC
 PRODUCT_PROPERTY_OVERRIDES += \

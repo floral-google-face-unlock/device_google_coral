@@ -1,0 +1,14 @@
+# SELinux rules pour Face Unlock
+
+# Autoriser le service de biométrie faciale
+allow hal_biometrics_face_default hal_graphics_allocator_default:fd use;
+allow hal_biometrics_face_default hal_graphics_mapper_default:fd use;
+allow hal_biometrics_face_default self:capability { block_suspend wake_alarm };
+
+# Permissions pour les fichiers et devices
+allow hal_biometrics_face_default vendor_data_file:file { read write open };
+allow hal_biometrics_face_default system_file:dir search;
+allow hal_biometrics_face_default system_file:file { read execute };
+
+# Modules
+allow hal_biometrics_face_default kernel:module { request load };

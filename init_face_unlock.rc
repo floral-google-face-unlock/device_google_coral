@@ -1,0 +1,15 @@
+# Script d'initialisation pour Face Unlock
+
+on init
+    # Charger les modules pour les capteurs nécessaires
+    insmod /vendor/lib/modules/ir_camera.ko
+    insmod /vendor/lib/modules/dot_projector.ko
+
+    # Démarrer le service de reconnaissance faciale
+    start face_unlock_service
+
+service face_unlock_service /vendor/bin/hw/android.hardware.biometrics.face@1.0-service
+    class main
+    user system
+    group system input
+    capabilities BLOCK_SUSPEND WAKE_ALARM

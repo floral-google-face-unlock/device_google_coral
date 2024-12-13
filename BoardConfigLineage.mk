@@ -36,3 +36,15 @@ BOARD_SEPOLICY_DIRS += device/google/coral/sepolicy-lineage/vendor
 
 # Verified Boot
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
+
+# Capteur infrarouge et projecteur de points
+BOARD_HAS_IR_CAMERA := true
+BOARD_HAS_DOT_PROJECTOR := true
+
+# Activer les fonctionnalités biométriques
+BOARD_BIOMETRIC_FACE_UNLOCK := true
+
+# Configuration des partitions nécessaires
+BOARD_VENDOR_QCOM_PROPRIETARY_PARTITION_PATHS := \
+    vendor/qcom/proprietary/common/biometrics \
+    vendor/google/biometrics/face
